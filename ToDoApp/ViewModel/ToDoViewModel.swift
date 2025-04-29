@@ -55,7 +55,7 @@ extension ToDoViewModel{
     
     //Toggle For completion
     func toggleTaskCompletion(task: Task){
-        task.isCompleted.toggle()
+        task.isCompleted.toggle() 
         save()
         fetchTask()
     }
@@ -74,8 +74,9 @@ extension ToDoViewModel{
     }
     
     //Update Task
-    func updateTask(task : Task, newTitle : String){
+    func updateTask(task : Task, newTitle : String, date: Date){
         task.task = newTitle
+        task.date = date
         save()
         fetchTask()
     }

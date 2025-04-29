@@ -11,6 +11,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		02A349A02DC17F9A00DB8F8E /* Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02A349A22DC17FAB00DB8F8E /* View */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = View;
+			sourceTree = "<group>";
+		};
+		02A349A42DC17FBF00DB8F8E /* ViewModel */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		02A349A72DC1800100DB8F8E /* Manager */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		02B0BA7E2DC040A300D03326 /* ToDoApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ToDoApp;
@@ -32,6 +52,10 @@
 		02B0BA732DC040A300D03326 = {
 			isa = PBXGroup;
 			children = (
+				02A349A02DC17F9A00DB8F8E /* Model */,
+				02A349A72DC1800100DB8F8E /* Manager */,
+				02A349A42DC17FBF00DB8F8E /* ViewModel */,
+				02A349A22DC17FAB00DB8F8E /* View */,
 				02B0BA7E2DC040A300D03326 /* ToDoApp */,
 				02B0BA7D2DC040A300D03326 /* Products */,
 			);
@@ -61,6 +85,10 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				02A349A02DC17F9A00DB8F8E /* Model */,
+				02A349A22DC17FAB00DB8F8E /* View */,
+				02A349A42DC17FBF00DB8F8E /* ViewModel */,
+				02A349A72DC1800100DB8F8E /* Manager */,
 				02B0BA7E2DC040A300D03326 /* ToDoApp */,
 			);
 			name = ToDoApp;

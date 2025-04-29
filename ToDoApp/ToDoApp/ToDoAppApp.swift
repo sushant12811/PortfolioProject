@@ -11,11 +11,14 @@ import SwiftUI
 struct ToDoAppApp: App {
     
     @StateObject private var viewModel = ToDoViewModel.shared // Observable Instance
+    @StateObject private var notificationCentre = NotificationCentre.shared
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TaskListView()
                 .environmentObject(viewModel)
+                .environmentObject(notificationCentre)
+            
         }
     }
 }

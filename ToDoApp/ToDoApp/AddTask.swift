@@ -10,6 +10,9 @@ import SwiftUI
 struct AddTask: View {
     
     @State private var textField: String = ""
+    @StateObject private var vm = ToDoViewModel.shared
+    @Environment(\.dismiss) private var dismiss
+
     
     var body: some View {
         VStack{
@@ -21,6 +24,9 @@ struct AddTask: View {
             
             Button("Save"){
                 //Save Action
+                vm.addTask(task: textField)
+                dismiss()
+
             }
             .font(.title3.bold())
             .foregroundStyle(.white)

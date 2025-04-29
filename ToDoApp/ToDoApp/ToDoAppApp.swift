@@ -16,7 +16,7 @@ struct ToDoAppApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, viewModel.persistentontainer.viewContext) // Inject the persistent container's managed object context into the environment.
-            
+                .environmentObject(viewModel)
         }
     }
 }

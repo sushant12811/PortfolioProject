@@ -9,16 +9,41 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.managedObjectContext) var viewContext // accessing the DB using context
+    @EnvironmentObject var viewModel: ToDoViewModel //Accessing the singleton via EnvironmentObject
+    @State private var sheetPresentedOn = false
+    
     
     var body: some View {
             VStack{
                 
+                List{
+                    ForEach(viewModel.tasks, id: \.self){ task in
+                        Text(task.task ?? "")
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    viewModel.deleteTask(task: task)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                        
+                    }
+                    
+                }
+                
+                
+                
+            }
+            .onAppear{
+                viewModel.fetchTask()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .overlay (alignment: .bottom){
                 Button{
                     //Action
+                    sheetPresentedOn = true
+                    
                 }label: {
                     Image(systemName: "plus")
                         .padding()
@@ -27,10 +52,15 @@ struct ContentView: View {
                         .foregroundStyle(.white)
                 }
             }
+            .sheet(isPresented: $sheetPresentedOn) {
+                AddTask()
+            }
         }
+        
     
 }
 
 #Preview {
     ContentView()
+        .environmentObject(ToDoViewModel.shared)
 }

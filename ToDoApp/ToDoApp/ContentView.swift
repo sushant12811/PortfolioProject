@@ -5,6 +5,7 @@
 //  Created by Sushant Dhakal on 2025-04-28.
 //
 
+
 import SwiftUI
 
 struct ContentView: View {
@@ -15,11 +16,15 @@ struct ContentView: View {
     
     
     var body: some View {
+        NavigationStack{
             VStack{
-                
                 List{
                     ForEach(viewModel.tasks, id: \.self){ task in
-                        Text(task.task ?? "")
+                        HStack{
+                            Text(task.task ?? "")
+                            Spacer()
+                            Image(systemName: "checkmark.circle.fill")
+                        }
                             .contextMenu {
                                 Button(role: .destructive) {
                                     viewModel.deleteTask(task: task)
@@ -35,6 +40,7 @@ struct ContentView: View {
                 
                 
             }
+        }
             .onAppear{
                 viewModel.fetchTask()
             }
@@ -55,6 +61,7 @@ struct ContentView: View {
             .sheet(isPresented: $sheetPresentedOn) {
                 AddTask()
             }
+            .navigationTitle("Task")
         }
         
     

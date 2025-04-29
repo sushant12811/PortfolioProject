@@ -16,7 +16,6 @@ struct ContentView: View {
     @State private var isCheckmark = false
     @State private var editTask : Task?
     
-    
     var body: some View {
         NavigationStack{
             VStack{
@@ -25,6 +24,11 @@ struct ContentView: View {
                         HStack{
                             Text(task.task ?? "")
                             Spacer()
+                            if let date = task.date{
+                                Text(date.formatted(date: .abbreviated, time: .omitted))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                             checkmarkImage(task: task)
                         }
                         .contextMenu{

@@ -15,12 +15,21 @@ struct AddTask: View {
     @FocusState private var isFocused : Bool
     var taskToEdit: Task?
     
+    @State private var selectedDate = Date()
+    let currentDate = Date()
+    let futureDate = Calendar.current.date(from: DateComponents(year: 2030)) ?? Date()
+
     
     
     var body: some View {
         
         NavigationStack{
             VStack{
+                
+                DatePicker("Select a Date", selection: $selectedDate, in: currentDate...futureDate, displayedComponents: .date)
+                    .datePickerStyle(.compact)
+                    .padding()
+                
                 TextField("Add a Task", text: $textField)
                     .focused($isFocused)
                     .padding()
@@ -80,7 +89,9 @@ extension AddTask{
             Button{
                 dismiss()
             }label: {
-                Image(systemName: "clear")
+                Image(systemName: "xmark")
+                    .imageScale(.large)
+                    .tint(.secondary)
             }
             
         }

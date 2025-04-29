@@ -38,9 +38,14 @@ struct AddTask: View {
                 TextField("Add a Task", text: $textField)
                     .focused($isFocused)
                     .padding()
-                    .background(.green.opacity(0.2))
+                    .background(.main.opacity(0.2))
                     .clipShape(.rect(cornerRadius: 10))
                     .padding()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.main.opacity(0.7), lineWidth: 1)
+                            .padding()
+                    }
                 
                 addEditButton()
                 
@@ -105,10 +110,10 @@ extension AddTask{
                 .tint(.white)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(textField.isEmpty ? Color.green.opacity(0.6) : Color.green)
+                .background(textField.isEmpty ? Color.main.opacity(0.6) : Color.main)
                 .clipShape(.rect(cornerRadius: 10))
                 .padding(.horizontal)
-                .shadow(color: Color.green.opacity(0.4), radius: 5)
+                .shadow(color: Color.main.opacity(0.4), radius: 5)
         }
         
     }
@@ -116,5 +121,4 @@ extension AddTask{
 
 #Preview {
     AddTask(taskToEdit: .constant(nil))
-        .preferredColorScheme(.dark)
 }

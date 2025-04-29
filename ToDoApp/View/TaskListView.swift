@@ -20,12 +20,17 @@ struct TaskListView: View {
     var body: some View {
         NavigationStack{
             VStack{
+                if viewModel.tasks.isEmpty {
+                    Text("No tasks to show")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                }
                 List{
                     ForEach(viewModel.tasks, id: \.self){ task in
                         HStack{
                             Text(task.task ?? "")
-                                .foregroundStyle(task.isCompleted ? .gray : .black)
-                                .strikethrough(task.isCompleted ? true : false, color: .gray)
+                                .foregroundStyle(task.isCompleted ? .gray : .check)
+                                .strikethrough(task.isCompleted ? true : false, color: .check.opacity(0.4))
                             Spacer()
                             if let date = task.date{
                                 Text(date.formatted(date: .abbreviated, time: .omitted))
@@ -87,17 +92,18 @@ extension TaskListView{
         }label: {
             Image(systemName: "plus")
                 .padding()
-                .background(.green)
+                .background(.main)
                 .clipShape(.circle)
                 .foregroundStyle(.white)
-                .shadow(color: Color.green.opacity(0.6), radius: 5)
+                .shadow(color: .main.opacity(0.4), radius: 5)
         }
     }
     
     //CheckMarkImage
     private func checkmarkImage(task : Task) -> some View {
         Image(systemName: task.isCompleted ? "checkmark.circle.fill" :"circle")
-            .foregroundStyle(.green)
+            .foregroundStyle(.main)
+            .imageScale(.large)
             .onTapGesture {
                 withAnimation(.easeIn(duration: 0.2)) {
                     viewModel.toggleTaskCompletion(task: task)

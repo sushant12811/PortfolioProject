@@ -47,6 +47,14 @@ extension ToDoViewModel{
     func addTask(task : String){
         let newTask = Task(context: persistentontainer.viewContext)
         newTask.task = task
+        newTask.isCompleted = false
+        save()
+        fetchTask()
+    }
+    
+    //Toggle For completion
+    func toggleTaskCompletion(task: Task){
+        task.isCompleted.toggle()
         save()
         fetchTask()
     }
@@ -62,6 +70,13 @@ extension ToDoViewModel{
                         print("Failed to save data: \(error.localizedDescription)")
                     }
                 }
+    }
+    
+    //Update Task
+    func updateTask(task : Task, newTitle : String){
+        task.task = newTitle
+        save()
+        fetchTask()
     }
     
     //Delete Task

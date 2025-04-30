@@ -13,15 +13,6 @@ I'm a passionate iOS Developer specializing in Swift, SwiftUI, and building beau
 ## Projects
 - [To-Do List App](https://github.com/sushant12811/PortfolioProject/tree/main/ToDoApp)
 
-## Features
-- Functional CRUD with Core Data.
-- Use of SwiftUI – Modern UI framework.
-- Context Menus & Editing – Good UX design with edit/delete options.
-- Sheet and NavigationStack – Clean navigation and modal handling.
-- Focus Management – Nice touch with @FocusState for UX.
-- Support Dark mode
-- Local Notification for reminder of task
-
 
 ## About Me
 - Graduated in Mobile App Development

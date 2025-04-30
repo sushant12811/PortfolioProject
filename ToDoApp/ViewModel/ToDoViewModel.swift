@@ -55,7 +55,7 @@ extension ToDoViewModel{
     
     //Toggle For completion
     func toggleTaskCompletion(task: Task){
-        task.isCompleted.toggle() 
+        task.isCompleted.toggle()
         save()
         fetchTask()
     }
@@ -63,14 +63,14 @@ extension ToDoViewModel{
     //Save Task
     func save(){
         let context = persistentontainer.viewContext
-                if context.hasChanges {
-                    do {
-                        try context.save()
-                        print("Successfully saved data")
-                    } catch let error {
-                        print("Failed to save data: \(error.localizedDescription)")
-                    }
-                }
+        if context.hasChanges {
+            do {
+                try context.save()
+                print("Successfully saved data")
+            } catch let error {
+                print("Failed to save data: \(error.localizedDescription)")
+            }
+        }
     }
     
     //Update Task
@@ -88,11 +88,24 @@ extension ToDoViewModel{
         fetchTask()
     }
     
-//    func deleteTask(indexSet : IndexSet) {
-//        guard let index = indexSet.first else {return}
-//        let taskToDelete = tasks[index]
-//        persistentontainer.viewContext.delete(taskToDelete)
-//        save()
-//    }
+    //    func deleteTask(indexSet : IndexSet) {
+    //        guard let index = indexSet.first else {return}
+    //        let taskToDelete = tasks[index]
+    //        persistentontainer.viewContext.delete(taskToDelete)
+    //        save()
+    //    }
+    
+    
+    func deleteAll(){
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Task.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try persistentontainer.viewContext.execute(deleteRequest)
+            save()
+            fetchTask()
+        } catch {
+            print("Error deleting all tasks: \(error.localizedDescription)")
+        }
+    }
     
 }

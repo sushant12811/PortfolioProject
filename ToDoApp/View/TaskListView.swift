@@ -49,6 +49,10 @@ struct TaskListView: View {
                 .listStyle(.insetGrouped)
             }
             .navigationTitle("Task")
+            .toolbar {
+                trailingToolbarContent()
+
+                }
         }
         .onAppear{
             viewModel.fetchTask()
@@ -66,19 +70,24 @@ struct TaskListView: View {
         }
         .alert("Delete", isPresented: $showAlert, actions:  {
             Button("Cancel", role: .cancel){
-                
+                //Cancel
             }
             Button("Ok", role: .destructive){
                 if let task = taskToDelete{
                     viewModel.deleteTask(task: task )
-                    
                 }
+            
+                viewModel.deleteAll()
+                
             }
         }, message: {
-            Text("Are you Sure want to delete it?")
+            Text("Are you Sure want to delete?")
         })
+        
+        
+        }
     }
-}
+
 
 
 //MARK: Extension for ContentView - Button, Images
@@ -132,6 +141,19 @@ extension TaskListView{
             }
             
             
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private func trailingToolbarContent() -> some ToolbarContent{
+        ToolbarItem(placement: .topBarTrailing) {
+            Button("Clear All"){
+                showAlert = true
+            }
+            .font(.headline)
+            .padding()
+            .clipShape(.rect(cornerRadius: 10))
+            foregroundStyle(.accent)
         }
     }
     

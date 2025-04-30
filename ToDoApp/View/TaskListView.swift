@@ -27,21 +27,24 @@ struct TaskListView: View {
                 }
                 List{
                     ForEach(viewModel.tasks, id: \.self){ task in
-                        HStack{
-                            Text(task.task ?? "")
-                                .foregroundStyle(task.isCompleted ? .gray : .check)
-                                .strikethrough(task.isCompleted ? true : false, color: .check.opacity(0.4))
-                            Spacer()
+                        VStack(alignment: .leading){
+                            HStack{
+                                Text(task.task ?? "")
+                                    .foregroundStyle(task.isCompleted ? .gray : .check)
+                                    .strikethrough(task.isCompleted ? true : false, color: .check.opacity(0.4))
+                                Spacer()
+                                checkmarkImage(task: task)
+                            }
+                            
                             if let date = task.date{
                                 Text(date.formatted(date: .abbreviated, time: .omitted))
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
-                            checkmarkImage(task: task)
                         }
-                        .contextMenu{
-                            contextMenuItem(task : task)
-                        }
+                            .contextMenu{
+                                contextMenuItem(task : task)
+                            }
                         
                     }
                     

@@ -21,7 +21,7 @@ A simple To-Do list app built with SwiftUI and CoreData.
 
 ## Installation
 1. Clone the repo
-2. Open `ToDoListApp.xcodeproj` in Xcode
+2. Open `ToDoApp.xcodeproj` in Xcode
 3. Run on iOS Simulator or your device
 
 ## Future Improvements

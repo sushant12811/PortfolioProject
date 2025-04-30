@@ -17,7 +17,7 @@ struct AddTask: View {
     @Binding var taskToEdit: Task?
     @State private var selectedDate = Date()
     @Binding  var editedDate : Date?
-
+    
     
     let currentDate = Date()
     let futureDate = Calendar.current.date(from: DateComponents(year: 2030)) ?? Date()
@@ -28,7 +28,7 @@ struct AddTask: View {
         
         NavigationStack{
             VStack{
-              
+                
                 DatePickerView()
                 
                 TextField("Add a Task", text: $textField)
@@ -51,12 +51,12 @@ struct AddTask: View {
                 trailingToolBar()
             }
             .onAppear{
-                    isFocused = true
+                isFocused = true
                 if let taskToEdit = taskToEdit {
                     textField = taskToEdit.task ?? ""
                     selectedDate = taskToEdit.date ?? Date()
                 }
-               
+                
             }
             .navigationTitle(taskToEdit == nil ? "Add Task" : "Edit Task")
             .navigationBarTitleDisplayMode(.inline)
@@ -127,7 +127,7 @@ extension AddTask{
         
     }
     
-   
+    
 }
 
 #Preview {

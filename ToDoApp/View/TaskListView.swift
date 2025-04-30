@@ -71,7 +71,6 @@ struct TaskListView: View {
         }
         .sheet(isPresented: $sheetPresentedOn) {
             AddTask(taskToEdit: $editTask, editedDate : $editDate)
-                .environmentObject(viewModel)
         }
         .alert("Delete", isPresented: $showAlert, actions:  {
             Button("Cancel", role: .cancel){

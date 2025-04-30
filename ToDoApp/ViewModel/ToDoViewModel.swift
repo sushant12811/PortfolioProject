@@ -47,7 +47,7 @@ extension ToDoViewModel{
     func addTask(task : String, date : Date){
         let newTask = Task(context: persistentontainer.viewContext)
         newTask.task = task
-        newTask.isCompleted = false
+        newTask.isCompleted = false // initial false
         newTask.date = date
         save()
         fetchTask()
@@ -96,6 +96,7 @@ extension ToDoViewModel{
     //    }
     
     
+    //Delete All Task
     func deleteAll(){
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Task.fetchRequest()
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

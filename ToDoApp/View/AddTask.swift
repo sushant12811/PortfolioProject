@@ -12,12 +12,11 @@ struct AddTask: View {
     @State private var textField: String = ""
     @EnvironmentObject var vm : ToDoViewModel
     @EnvironmentObject var nc : NotificationCentre
-
     @Environment(\.dismiss) private var dismiss
     @FocusState private var isFocused : Bool
     @Binding var taskToEdit: Task?
-    
     @State private var selectedDate = Date()
+    
     let currentDate = Date()
     let futureDate = Calendar.current.date(from: DateComponents(year: 2030)) ?? Date()
     
@@ -27,13 +26,8 @@ struct AddTask: View {
         
         NavigationStack{
             VStack{
-                
-                DatePicker("Select a Date", selection: $selectedDate, in: currentDate...futureDate, displayedComponents: .date)
-                    .datePickerStyle(.compact)
-                    .padding()
-                    .background(.gray.opacity(0.4))
-                    .clipShape(.rect(cornerRadius: 10))
-                    .padding()
+              
+                DatePickerView()
                 
                 TextField("Add a Task", text: $textField)
                     .focused($isFocused)
@@ -85,6 +79,17 @@ extension AddTask{
         
     }
     
+    //DatePicker
+    private func DatePickerView() -> some View {
+        DatePicker("Select a Date", selection: $selectedDate, in: currentDate...futureDate, displayedComponents: .date)
+            .datePickerStyle(.compact)
+            .padding()
+            .background(.main.opacity(0.4))
+            .clipShape(.rect(cornerRadius: 10))
+            .padding()
+        
+    }
+    
     //Add/Update Button
     private func addEditButton()-> some View {
         Button{
@@ -117,6 +122,8 @@ extension AddTask{
         }
         
     }
+    
+   
 }
 
 #Preview {

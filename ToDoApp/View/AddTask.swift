@@ -16,6 +16,8 @@ struct AddTask: View {
     @FocusState private var isFocused : Bool
     @Binding var taskToEdit: Task?
     @State private var selectedDate = Date()
+    @Binding  var editedDate : Date?
+
     
     let currentDate = Date()
     let futureDate = Calendar.current.date(from: DateComponents(year: 2030)) ?? Date()
@@ -52,7 +54,9 @@ struct AddTask: View {
                     isFocused = true
                 if let taskToEdit = taskToEdit {
                     textField = taskToEdit.task ?? ""
+                    selectedDate = taskToEdit.date ?? Date()
                 }
+               
             }
             .navigationTitle(taskToEdit == nil ? "Add Task" : "Edit Task")
             .navigationBarTitleDisplayMode(.inline)
@@ -99,7 +103,7 @@ extension AddTask{
                     vm.updateTask(task: taskToEdit, newTitle: textField, date: selectedDate)
                 } else {
                     // Add new task
-                    vm.addTask(task: textField)
+                    vm.addTask(task: textField, date: selectedDate)
                     nc.scheduleNotification(taskTitle: textField, taskDate: selectedDate)
                     
                 }
@@ -127,5 +131,5 @@ extension AddTask{
 }
 
 #Preview {
-    AddTask(taskToEdit: .constant(nil))
+    AddTask(taskToEdit: .constant(nil), editedDate: .constant(nil))
 }

@@ -14,6 +14,8 @@ struct TaskListView: View {
     @EnvironmentObject var notificationCentre: NotificationCentre
     @State private var sheetPresentedOn = false
     @State private var editTask : Task?
+    @State private var editDate : Date?
+
     @State private var taskToDelete : Task?
     @State private var showAlert = false
     
@@ -68,7 +70,7 @@ struct TaskListView: View {
             addButtonTapped()
         }
         .sheet(isPresented: $sheetPresentedOn) {
-            AddTask(taskToEdit: $editTask)
+            AddTask(taskToEdit: $editTask, editedDate : $editDate)
                 .environmentObject(viewModel)
         }
         .alert("Delete", isPresented: $showAlert, actions:  {

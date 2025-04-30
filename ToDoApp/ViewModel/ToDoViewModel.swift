@@ -44,11 +44,11 @@ extension ToDoViewModel{
     }
     
     //Add Task
-    func addTask(task : String){
+    func addTask(task : String, date : Date){
         let newTask = Task(context: persistentontainer.viewContext)
         newTask.task = task
         newTask.isCompleted = false
-        newTask.date = Date()
+        newTask.date = date
         save()
         fetchTask()
     }

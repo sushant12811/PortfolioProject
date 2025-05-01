@@ -8,6 +8,7 @@ import Foundation
 struct APIConfig: Decodable{
     let weatherURL : String
     let weatherAPIKey : String
+    let iconURL : String
     
     static let shared: APIConfig = {
         guard let url = Bundle.main.url(forResource: "APIConfig", withExtension: "json") else{

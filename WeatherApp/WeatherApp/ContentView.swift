@@ -11,17 +11,20 @@ struct ContentView: View {
     
     @StateObject private var vm = WeatherViewModel()
     @State private var searchText = ""
+    let iconWeatherURL = APIConfig.shared.iconURL
     
+
     
     var body: some View {
         NavigationStack{
             VStack{
-                
-                Text("\(vm.cityName)")
-                Text(vm.temp)
-                
-               
-          
+                if let weather = vm.weather{
+                    Image(systemName: getWeatherIconSymbol(for: weather.id))
+                    Text("\(weather.cityName)")
+                    Text("\(weather.temperature.convertToCelsius())°C")
+                }
+              
+
             }
             .searchable(text: $searchText)
             .onSubmit(of: .search){

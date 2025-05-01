@@ -8,19 +8,23 @@
 import Foundation
 
 class WeatherViewModel: ObservableObject{
-    @Published var cityName: String = ""
-    @Published var temp : String = ""
-
+    @Published var weather: DomainWeatherModel?
+    
     func loadWeather(name: String) async {
         do{
-            let weatherData = try await WeatherService.shared.fetchWeather(cityName: name)
+            let weatherResponse = try await WeatherService.shared.fetchWeather(cityName: name)
+            let weatherData = DomainWeatherModel(
+                cityName: weatherResponse.name,
+                temperature: weatherResponse.main.temp,
+                humidity: weatherResponse.main.humidity,
+                icon: weatherResponse.weather.first?.icon ?? "photo",
+                id: weatherResponse.weather.first?.id ?? 0
+            )
             await MainActor.run {
-                self.cityName = weatherData.name
-                self.temp = "\(weatherData.main.temp) K"
-
+                self.weather = weatherData
             }
             
-           
+            
             
         }catch{
             print("Error Loading Weather : \(error.localizedDescription)")

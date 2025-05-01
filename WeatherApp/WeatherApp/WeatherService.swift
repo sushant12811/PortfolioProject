@@ -12,10 +12,14 @@ class WeatherService {
     
     static let shared = WeatherService()
 
-    let apiKey = "406873bf744ce97d89ab71327c91d6d1"
+    let apiKey = APIConfig.shared.weatherAPIKey
+    let weatherURL = APIConfig.shared.weatherURL
+    
+    
+    
     
     func fetchWeather(cityName : String) async throws -> WeatherResponse{
-        let baseURL = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(apiKey)"
+        let baseURL = "\(weatherURL)q=\(cityName)&appid=\(apiKey)"
         guard let url = URL(string: baseURL) else {
             throw URLError(.badURL)
         }

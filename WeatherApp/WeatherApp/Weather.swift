@@ -30,6 +30,7 @@ struct DomainWeatherModel{
     let humidity: Int
     let icon: String
     let id: Int
+    let description: String
 }
 
 

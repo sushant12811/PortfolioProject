@@ -16,8 +16,6 @@ class WeatherService {
     let weatherURL = APIConfig.shared.weatherURL
     
     
-    
-    
     func fetchWeather(cityName : String) async throws -> WeatherResponse{
         let baseURL = "\(weatherURL)q=\(cityName)&appid=\(apiKey)"
         guard let url = URL(string: baseURL) else {
@@ -44,6 +42,7 @@ class WeatherService {
         if let httpResponse = response as? HTTPURLResponse{
             print("Http Status Code: \(httpResponse)")
         }
+            
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     return try decoder.decode(WeatherResponse.self, from: data)

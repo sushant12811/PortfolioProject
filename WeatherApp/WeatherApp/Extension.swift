@@ -5,6 +5,8 @@
 //  Created by Sushant Dhakal on 2025-04-30.
 //
 import Foundation
+import SwiftUI
+import SpriteKit
 
     
 extension Double {
@@ -18,7 +20,7 @@ extension Double {
 func getWeatherIconSymbol(for id: Int) -> String {
         switch id {
         case 200...232:
-            return "cloud.bolt.rain.fill"   
+            return "cloud.bolt.rain.fill"
         case 300...321:
             return "cloud.drizzle.fill"
         case 500...531:
@@ -35,6 +37,31 @@ func getWeatherIconSymbol(for id: Int) -> String {
             return "questionmark.circle.fill"
         }
     }
+
+
+func getBackground(for id: Int) -> AnyView {
+    switch id {
+    case 200...232:
+        return AnyView(Image(.thunder).resizable().scaledToFill())
+    case 300...321:
+        return AnyView(WeatherView(emitterFile: "Rain.sks"))
+    case 500...531:
+        return AnyView(WeatherView(emitterFile: "Rain.sks"))
+    case 600...622:
+        return AnyView(WeatherView(emitterFile: "Snow.sks"))
+    case 701...781:
+        return AnyView(Image(.cloudFog).resizable().scaledToFill())
+    case 800:
+        return AnyView(Image(.sunny).resizable().scaledToFill())
+    case 801...804:
+        return AnyView(Image(.cloudy).resizable().scaledToFill())
+    default:
+        return AnyView(Color.backGround1)
+    }
+}
+
+    
+
 
 
 

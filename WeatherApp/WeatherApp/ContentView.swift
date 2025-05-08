@@ -17,10 +17,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
                
+            ZStack {
                 VStack{
                     if let location = locationManager.location{
                         if let weather = vm.weather{
-                            
                             VStack {
                                 VStack{
                                     Image(systemName: getWeatherIconSymbol(for: weather.id))
@@ -72,7 +72,8 @@ struct ContentView: View {
                                 Spacer()
                                 
                             }
-                            .background(getBackground(for: weather.id))
+                            .background(getBackgroundSks(for: weather.id))
+                            
                             
                         }else{
                             ProgressView()
@@ -94,7 +95,8 @@ struct ContentView: View {
                     }
                     
                     
-                
+                    
+                }
             }
             
             

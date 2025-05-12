@@ -10,6 +10,7 @@ import Foundation
 class WeatherViewModel: ObservableObject{
     @Published var weather: DomainWeatherModel?
     
+    //MARK: Load Weather with City name
     func loadWeather(name: String) async {
         do{
             let weatherResponse = try await WeatherService.shared.fetchWeather(cityName: name)
@@ -23,6 +24,9 @@ class WeatherViewModel: ObservableObject{
         }
     }
     
+    
+    
+    //MARK: Load Weather with COORD
     func loadWeather(lat: Double, lon: Double) async {
         do {
             let weatherResponse = try await WeatherService.shared.fetchCurrentLocationWeather(latitude: lat, longitude: lon)
@@ -37,6 +41,9 @@ class WeatherViewModel: ObservableObject{
         }
     }
     
+    
+    
+    //MARK: Domain weather Data to load it.
     func domainWeatherInstance(weatherResponse: WeatherResponse)-> DomainWeatherModel{
         let weatherData = DomainWeatherModel(
             id: weatherResponse.weather.first?.id ?? 0,

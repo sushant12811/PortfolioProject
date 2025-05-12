@@ -33,18 +33,3 @@ import SpriteKit
     
     
     
-    //    override func didMove(to view: SKView) {
-    //        guard let rainEmitterNode = rainEmitterNode else { return }
-    //        rainEmitterNode.particleSize = CGSize(width: 40, height: 100)
-    //        addChild(rainEmitterNode)
-    //    }
-    //
-    //    override func didChangeSize(_ oldSize: CGSize) {
-    //        guard let rainEmitterNode = rainEmitterNode else { return }
-    //        rainEmitterNode.particlePosition = CGPoint(x: size.width/2, y: size.height)
-    //        rainEmitterNode.particlePositionRange = CGVector(dx: size.width, dy: size.height)
-    //    }
-
-
-
-

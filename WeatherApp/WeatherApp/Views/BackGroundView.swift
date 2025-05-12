@@ -8,7 +8,7 @@
 import SwiftUI
 import SpriteKit
 
-struct WeatherView: View {
+struct BackGroundView: View {
     var emitterFile: String
     var backgroundView: UIColor?
     
@@ -27,5 +27,5 @@ struct WeatherView: View {
 
 
 #Preview {
-    WeatherView(emitterFile: "Sun.sks")
+    BackGroundView(emitterFile: "Sun.sks")
 }

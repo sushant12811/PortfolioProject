@@ -43,19 +43,19 @@ func getWeatherIconSymbol(for id: Int) -> String {
 func getBackgroundSks(for id: Int) -> AnyView {
     switch id {
     case 200...232:
-        return AnyView(WeatherView(emitterFile: "Thunder.sks", backgroundView: .black))
+        return AnyView(BackGroundView(emitterFile: "Thunder.sks", backgroundView: .black))
     case 300...321:
-        return AnyView(WeatherView(emitterFile: "Rain.sks", backgroundView: .rainBackGround))
+        return AnyView(BackGroundView(emitterFile: "Rain.sks", backgroundView: .rainBackGround))
     case 500...531:
-        return AnyView(WeatherView(emitterFile: "Rain.sks", backgroundView: .rainBackGround ))
+        return AnyView(BackGroundView(emitterFile: "Rain.sks", backgroundView: .rainBackGround ))
     case 600...622:
-        return AnyView(WeatherView(emitterFile: "Snow.sks", backgroundView: .rainBackGround))
+        return AnyView(BackGroundView(emitterFile: "Snow.sks", backgroundView: .rainBackGround))
     case 701...781:
-        return AnyView(WeatherView(emitterFile: "Fog.sks", backgroundView: .systemGray))
+        return AnyView(BackGroundView(emitterFile: "Fog.sks", backgroundView: .systemGray))
     case 800:
-        return AnyView(WeatherView(emitterFile: "Sun.sks", backgroundView: .systemBlue))
+        return AnyView(BackGroundView(emitterFile: "Sun.sks", backgroundView: .systemBlue))
     case 801...804:
-        return AnyView(WeatherView(emitterFile: "Fog.sks", backgroundView: .systemGray2))
+        return AnyView(BackGroundView(emitterFile: "Fog.sks", backgroundView: .systemGray2))
     default:
         return AnyView(Color.backGround1)
     }
